@@ -40,11 +40,11 @@ public class MySqlUserService {
             stmt.executeUpdate(createUserSql);
 
             // Grant basic privileges (will grant specific database privileges when databases are created)
-            String grantSql = String.format(
-                    "GRANT USAGE ON *.* TO '%s'@'%%'",
-                    username
-            );
-            stmt.executeUpdate(grantSql);
+//            String grantSql = String.format(
+//                    "GRANT USAGE ON *.* TO '%s'@'%%'",
+//                    username
+//            );
+//            stmt.executeUpdate(grantSql);
 
             stmt.executeUpdate("FLUSH PRIVILEGES");
         }

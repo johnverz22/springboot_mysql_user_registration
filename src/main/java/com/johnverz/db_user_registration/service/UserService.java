@@ -33,12 +33,13 @@ public class UserService {
 
 
     public User registerUser(User user) throws Exception {
+        //retrieve plain password for MySQL user creation
+        String mysqlPassword = user.getPassword();
         // Encode password for application use
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         // Generate MySQL credentials
-        String mysqlUsername = "user_" + user.getUsername().toLowerCase();
-        String mysqlPassword = UUID.randomUUID().toString().replace("-", "").substring(0, 16);
+        String mysqlUsername = user.getUsername().toLowerCase();
         
         // Save user first
         User savedUser = userRepository.save(user);

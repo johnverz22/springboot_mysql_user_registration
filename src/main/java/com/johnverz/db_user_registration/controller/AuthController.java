@@ -27,6 +27,12 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("message", "You have been logged out successfully.");
+        return "redirect:/login";
+    }
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
